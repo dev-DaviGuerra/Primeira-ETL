@@ -1,5 +1,10 @@
 import os
 
+import requests
+
+from constantes import BASE_URL
+
+
 def get_endpoint(endpoint, endpoint_id=None, params=None):
     headers = {
         "Accept": "application/json",
@@ -8,6 +13,13 @@ def get_endpoint(endpoint, endpoint_id=None, params=None):
         "ResourceVersion": "v4"
     }
 
+    url = BASE_URL + endpoint
+
+    if endpoint_id:
+        url = url + "/" + endpoint_id
+    resultado_get = requests.get(url=url, headers=headers, params=None)
+
+    import ipdb; ipdb.set_trace()
 
 if __name__ == "__main__":
     get_endpoint('flights')
