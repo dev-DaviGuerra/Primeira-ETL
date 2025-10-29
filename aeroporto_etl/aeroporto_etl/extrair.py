@@ -130,8 +130,3 @@ def get_destinations():
 def get_destination_por_iata(iata):
     return get_endpoint(endpoint='destinations', endpoint_id=iata)
 
-
-
-if __name__ == "__main__":
-    resultado = get_destination_por_iata('AAB')
-    print(resultado)
