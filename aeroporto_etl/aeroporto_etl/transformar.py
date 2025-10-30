@@ -1,6 +1,3 @@
-
-
-
 def transformar_airlines(airlines_paginas):
 
     resultados = []
@@ -38,4 +35,27 @@ def transformar_aircraft_types(aircraft_types_paginas):
             }
         )
 
+    return resultados
+
+def transformar_destinations(destinations_paginas):
+    
+    resultados = []
+    destinations = []
+
+    for pagina in destinations_paginas:
+        destinations.extend(pagina.get('destinations'))
+
+    for destination in destinations:
+        name = destination.get('publicName')
+        if name:
+            name = name.get('english')
+        resultados.append(
+            {
+            "name": name,
+            "country": destination.get('country'),
+            "iata": destination.get('iata'),
+            "city": destination.get('city')
+            }
+        )
+    
     return resultados
