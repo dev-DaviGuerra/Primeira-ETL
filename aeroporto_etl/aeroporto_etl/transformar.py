@@ -20,3 +20,22 @@ def transformar_airlines(airlines_paginas):
         )
     
     return resultados
+
+def transformar_aircraft_types(aircraft_types_paginas):
+
+    resultados = []
+    aircraft_types = []
+
+    for pagina in aircraft_types_paginas:
+        aircraft_types.extend(pagina.get('aircraftTypes'))
+
+    for aircraft in aircraft_types:
+        resultados.append(
+            {
+            "iataMain": aircraft.get('iataMain'),
+            "iataSub": aircraft.get('iataSub'),
+            "description": aircraft.get('longDescription')
+            }
+        )
+
+    return resultados
